@@ -30,8 +30,8 @@
 - Konfigurasi Owner Pada ```./setting/config.js```
 
 ```ts
-global.owner = ["6285742632270"];
-global.author = "RezaDevv";
+global.owner = ["6285393659857"];
+global.author = "Tama-ID";
 global.packname = "Push-Kontak";
 global.sessionName = "Bot-Session";
 global.versionbot = "1.2.0";
@@ -71,12 +71,12 @@ $ npm start
 ```
 
 ## Thanks To
-* [`ResahDevv`](https://github.com/resahdevv)
+* [`Tamaaa`](https://github.com/tamayana)
 
 ```Thanks to all who have participated in the development of this script```
 
 ## Donate
-<a href="https://saweria.co/rezadevv" target="_blank"><img src="https://user-images.githubusercontent.com/26188697/180601310-e82c63e4-412b-4c36-b7b5-7ba713c80380.png" alt="Donate For Yusril" height="41" width="174"></a>
+<a href="https://tamayana.github.io/TamaStore/" target="_blank"><img src="https://user-images.githubusercontent.com/26188697/180601310-e82c63e4-412b-4c36-b7b5-7ba713c80380.png" alt="Donate For Yusril" height="41" width="174"></a>
 
 ## License
 [MIT License](https://github.com/resahdevv/Push-Kontak/LICENSE)
