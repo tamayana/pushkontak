@@ -1,5 +1,5 @@
 /**
- * Source Code By Reza
+ * Source Code By Tama
  * Don't Forget Smile
  * Thank You :)
 */
@@ -25,7 +25,7 @@ const createSerial = (size) => {
 }
 
 require("./config");
-module.exports = rezadevv = async (client, m, chatUpdate, store) => {
+module.exports = tamabot = async (client, m, chatUpdate, store) => {
   try {
     var body =
       m.mtype === "conversation"
@@ -46,7 +46,6 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
         ? m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text
         : "";
     var budy = typeof m.text == "string" ? m.text : "";
-    // var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/"
     var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
     const isCmd2 = body.startsWith(prefix);
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
@@ -69,7 +68,6 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
       return !color ? chalk.green(text) : chalk.keyword(color)(text);
     };
 
-    // Group
     const groupMetadata = m.isGroup ? await client.groupMetadata(m.chat).catch((e) => {}) : "";
     const groupName = m.isGroup ? groupMetadata.subject : "";
     const participants = m.isGroup ? await groupMetadata.participants : ''
@@ -77,7 +75,6 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
     const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
     const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 
-    // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
     if (isCmd2 && !m.isGroup) {
@@ -99,7 +96,7 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
         case "menu" : case "help" : {
           const reactionMessage = {
             react: {
-              text: "🕓", // use an empty string to remove the reaction
+              text: "🕓",
               key: m.key
             }
           }
@@ -126,7 +123,7 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
               if (count === 0) {
                 m.reply(`*_Berhasil Push Kontak:_*\n*_Jumlah Pesan Terkirim: ${sentCount}_*`);
               }
-            }, i * 1000); // delay setiap pengiriman selama 1 detik
+            }, i * 1000);
           }
         }
         break;
@@ -200,10 +197,8 @@ module.exports = rezadevv = async (client, m, chatUpdate, store) => {
             if (m.isBaileys) return;
             if (!budy.toLowerCase()) return;
             if (argsLog || (isCmd2 && !m.isGroup)) {
-              // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
               console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("tidak tersedia", "turquoise"));
             } else if (argsLog || (isCmd2 && m.isGroup)) {
-              // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
               console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("tidak tersedia", "turquoise"));
             }
           }
