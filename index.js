@@ -1,5 +1,5 @@
 /**
- * Source Code By Reza
+ * Source Code By Tama
  * Don't Forget Smile
  * Thank You :)
 */
@@ -90,49 +90,15 @@ function smsg(conn, m, store) {
         ...(m.isGroup ? { participant: m.quoted.sender } : {}),
       }));
 
-      /**
-       *
-       * @returns
-       */
       m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key });
-
-      /**
-       *
-       * @param {*} jid
-       * @param {*} forceForward
-       * @param {*} options
-       * @returns
-       */
       m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options);
-
-      /**
-       *
-       * @returns
-       */
       m.quoted.download = () => conn.downloadMediaMessage(m.quoted);
     }
   }
   if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg);
   m.text = m.msg.text || m.msg.caption || m.message.conversation || m.msg.contentText || m.msg.selectedDisplayText || m.msg.title || "";
-  /**
-   * Reply to this message
-   * @param {String|Object} text
-   * @param {String|false} chatId
-   * @param {Object} options
-   */
   m.reply = (text, chatId = m.chat, options = {}) => (Buffer.isBuffer(text) ? conn.sendMedia(chatId, text, "file", "", m, { ...options }) : conn.sendText(chatId, text, m, { ...options }));
-  /**
-   * Copy this message
-   */
   m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)));
-
-  /**
-   *
-   * @param {*} jid
-   * @param {*} forceForward
-   * @param {*} options
-   * @returns
-   */
   m.copyNForward = (jid = m.chat, forceForward = false, options = {}) => conn.copyNForward(jid, m, forceForward, options);
 
   return m;
@@ -144,7 +110,7 @@ async function startEza() {
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
     color(
-      figlet.textSync("Push-Kontak", {
+      figlet.textSync("TamaBotWa", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -185,7 +151,6 @@ async function startEza() {
   store.bind(client.ev);
 
   client.ev.on("messages.upsert", async (chatUpdate) => {
-    //console.log(JSON.stringify(chatUpdate, undefined, 2))
     try {
       mek = chatUpdate.messages[0];
       if (!mek.message) return;
@@ -200,20 +165,14 @@ async function startEza() {
     }
   });
 
-  // Handle error
-  const unhandledRejections = new Map();
   process.on("unhandledRejection", (reason, promise) => {
-    unhandledRejections.set(promise, reason);
     console.log("Unhandled Rejection at:", promise, "reason:", reason);
   });
-  process.on("rejectionHandled", (promise) => {
-    unhandledRejections.delete(promise);
-  });
+  process.on("rejectionHandled", (promise) => {});
   process.on("Something went wrong", function (err) {
     console.log("Caught exception: ", err);
   });
 
-  // Setting
   client.decodeJid = (jid) => {
     if (!jid) return jid;
     if (/:\d+@/gi.test(jid)) {
@@ -305,12 +264,11 @@ async function startEza() {
       }
     } else if (connection === "open") {
       const botNumber = await client.decodeJid(client.user.id);
-      console.log(color("Created By RezaDevv", "green"));
+      console.log(color("Created By Tama", "green"));
       console.log(color("Don't Forget Smile :)", "yellow"));
-      console.log(color("Type .pushkontak for kontak in group"));
+      console.log(color("Type .menu for menu bot"));
       client.sendMessage(`${owner}@s.whatsapp.net`, { text: `*── 「 DETAIL CONFIGURASI 」 ──*\n\n*_Owner:_* _${owner}_\n*_Author:_* _${author}_\n*_Session:_* _${sessionName}_\n*_Version:_* _${versionbot}_\n\n*_${botNumber}_*` });
     }
-    // console.log('Connected...', update)
   });
 
   client.ev.on("creds.update", saveCreds);
@@ -350,7 +308,6 @@ async function startEza() {
   client.sendText = (jid, text, quoted = "", options) => client.sendMessage(jid, { text: text, ...options }, { quoted });
 
   client.cMod = (jid, copy, text = "", sender = client.user.id, options = {}) => {
-    //let copy = message.toJSON()
     let mtype = Object.keys(copy.message)[0];
     let isEphemeral = mtype === "ephemeralMessage";
     if (isEphemeral) {
