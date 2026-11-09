@@ -1,7 +1,7 @@
 {
-  "name": "Push-Kontak",
+  "name": "tamabotwa",
   "version": "1.2.0",
-  "description": "WhatsApp Bot Push Kontak Using Lib Baileys Multi Device",
+  "description": "WhatsApp Bot TamaBotWa Using Lib Baileys Multi Device",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -9,17 +9,16 @@
   },
   "keywords": [
     "termux",
-    "whatsapp-openai",
-    "whatsapp-openai",
     "whatsapp-bot",
     "whatsapp-baileys",
     "baileys-md",
     "bot-wa",
     "bot-md",
-    "whatsapp-multi-device"
+    "whatsapp-multi-device",
+    "tamabotwa"
   ],
-  "base": "https://github.com/resahdevv/Push-Kontak",
-  "author": "RezaDevv",
+  "base": "https://github.com/tamayana/TamaBotWa",
+  "author": "RahmadPratama",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys": "github:WhiskeySockets/Baileys",
@@ -42,10 +41,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/resahdevv/Push-Kontak.git"
+    "url": "https://github.com/tamayana/TamaBotWa.git"
   },
   "bugs": {
-    "url": "https://github.com/resahdevv/Push-Kontak/issues"
+    "url": "https://github.com/tamayana/TamaBotWa/issues"
   },
-  "homepage": "https://github.com/resahdevv/Push-Kontak#readme"
+  "homepage": "https://github.com/tamayana/TamaBotWa#readme"
 }
